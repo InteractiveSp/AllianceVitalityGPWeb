@@ -1,0 +1,222 @@
+Imports Microsoft.VisualBasic
+Imports System
+Imports System.Data
+Imports System.Configuration
+Imports System.Collections
+Imports System.Web
+Imports System.Web.Security
+Imports System.Web.UI
+Imports System.Web.UI.Page
+Imports System.Web.UI.WebControls
+Imports System.Web.UI.WebControls.WebParts
+Imports System.Web.UI.HtmlControls
+Imports DevExpress.Xpo
+Imports Alliance.Data
+Imports DevExpress.Data.Filtering
+Imports DevExpress.Web
+
+Partial Class Test
+    Inherits System.Web.UI.Page
+    Private xpoSession As Session
+    'Shadows _session As Session
+    Public ouser As GlobalUser
+    Private _string As String
+
+    Protected Sub Page_Init(ByVal sender As Object, ByVal e As EventArgs)
+        'xpoSession = XpoHelper.GetNewSession()
+        'xpoBeneficary.Session = xpoSession
+        'Dim _string As String = Request.QueryString("id")
+        'xpoBeneficary.Criteria = "Oid=" + _string
+        'Dim _Beneficiary As Beneficiary = xpoSession.GetObjectByKey(Of Beneficiary)(CInt(_string))
+
+
+        'Dim odivision As New XPCollection(Of Division)(xpoSession, CriteriaOperator.Parse("Client=?", _Beneficiary.Client.Oid))
+        'cboDivision.DataSource = odivision
+        'cboDivision.ValueField = "Oid"
+        xpoSession = XpoHelper.GetNewSession()
+        xpoBeneficary.Session = xpoSession
+
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
+        If String.IsNullOrEmpty(Page.Title) Then
+            'title saved in web.config
+            Page.Title = "Beneficiary Details"
+        Else
+            Page.Title = "Beneficiary Details"
+        End If
+
+        Dim Fred = Session("caption")
+
+        'xpoSession = XpoHelper.GetNewSession()
+        'Dim _string As String = Request.QueryString("id")
+        _string = Request.QueryString("id")
+        'Dim user As MembershipUser = Membership.GetUser()
+        'Dim _uow As New UnitOfWork
+
+        'ouser = xpoSession.GetObjectByKey(Of GlobalUser)(user.ProviderUserKey)
+        'Dim _ThisBeneficiary = xpoSession.GetObjectByKey(Of Beneficiary)(CInt(_string))
+        'GridViewRow row = CustomersGridView.SelectedRow
+
+        Using _Beneficiary As New XPCollection(xpoBeneficary.Session, GetType(Beneficiary))
+            _Beneficiary.Filter = CriteriaOperator.Parse("Oid = " & _string)
+            Dim _ThisBeneficiary As Beneficiary = CType(_Beneficiary(0), Beneficiary)
+
+            If Not IsPostBack Then
+
+                'spePolicyNumber.Value = _ThisBeneficiary.Oid
+                speRelationship.Text = CInt(_ThisBeneficiary.RelationShip.Oid)
+                speLevelofCover.Text = CInt(_ThisBeneficiary.LevelofCover.Oid)
+                txtTitle.Text = _ThisBeneficiary.Title
+                txtFirstName.Text = _ThisBeneficiary.FirstName
+                txtInitials.Text = _ThisBeneficiary.Initials
+                txtSurname.Text = _ThisBeneficiary.SurName
+                txtGender.Text = _ThisBeneficiary.Gender
+                txtJoinDate.Text = _ThisBeneficiary.JoinDate
+                txtVIP.Text = _ThisBeneficiary.Vip
+                txtAddr1.Text = _ThisBeneficiary.Addr1
+                txtAddr2.Text = _ThisBeneficiary.Addr2
+                txtAddr3.Text = _ThisBeneficiary.Addr3
+                txtCity.Text = _ThisBeneficiary.City
+                txtCounty.Text = _ThisBeneficiary.County
+                txtPostcode.Text = _ThisBeneficiary.PostCode
+                txtWorkPhone.Text = _ThisBeneficiary.WorkPhone
+                txtHomePhone.Text = _ThisBeneficiary.HomePhone
+                txtMobile.Text = _ThisBeneficiary.MobilePhone
+                txtEmail.Text = _ThisBeneficiary.Email
+
+                'If Not (_ThisBeneficiary.GP Is Nothing) Then
+                '    txtGP.Text = CInt(_ThisBeneficiary.GP.Oid)
+                'End If
+
+                'If Not (_ThisBeneficiary.Practice Is Nothing) then
+                '    txtPractice.Text = CInt(_ThisBeneficiary.Practice.Oid)
+                'End If
+
+                txtDOB.Text = _ThisBeneficiary.DOB
+                txtStudent.Text = _ThisBeneficiary.Student
+                txtDeceased.Text = _ThisBeneficiary.Deceased
+                If Not (_ThisBeneficiary.LeaveDate Is Nothing) Then
+                    txtLeaveDate.Text = _ThisBeneficiary.LeaveDate
+                End If
+
+                If Not _ThisBeneficiary.Division Is Nothing Then
+                    cboDivision.Text = CInt(_ThisBeneficiary.Division.Oid)
+                End If
+
+                If Not _ThisBeneficiary.ReportingDivision Is Nothing Then
+                    cboReportingDivision.Text = CInt(_ThisBeneficiary.ReportingDivision.Oid)
+                End If
+
+                If _ThisBeneficiary.BusinessUnit Is Nothing Then
+                    cboBusinessUnit.Text = CInt(_ThisBeneficiary.BusinessUnit.Oid)
+                End If
+
+                txtPosition.Text = _ThisBeneficiary.Position
+                txtBand.Text = _ThisBeneficiary.Band
+                txtEmployeeCont.Text = _ThisBeneficiary.EmployeeContribution
+                txtEmployeeNo.Text = _ThisBeneficiary.EmployeeNo
+                txtNI.Text = _ThisBeneficiary.NINumber
+
+            End If
+
+
+        End Using
+
+
+
+
+    End Sub
+    Protected Sub FormBeneficaryEdit_ItemUpdated(ByVal sender As Object, ByVal e As FormViewUpdatedEventArgs)
+        Response.Redirect("~/Default.aspx")
+    End Sub
+    Protected Sub FormBeneficaryEdit_ItemCommand(ByVal sender As Object, ByVal e As FormViewCommandEventArgs)
+        If e.CommandName = "Cancel" Then
+            Response.Redirect("~/Default.aspx")
+        End If
+    End Sub
+
+
+    Protected Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+
+        Using _Beneficiary As New XPCollection(xpoBeneficary.Session, GetType(Beneficiary))
+            _Beneficiary.Filter = CriteriaOperator.Parse("Oid = " & _string)
+            Dim _ThisBeneficiary As Beneficiary = CType(_Beneficiary(0), Beneficiary)
+
+            If Not IsPostBack Then
+
+                'spePolicyNumber.Value = _ThisBeneficiary.Oid
+                _ThisBeneficiary.Oid = (CType(ASPxFormLayout1.FindNestedControlByFieldName("Oid"), ASPxSpinEdit)).Value
+                'speRelationship.Value = _ThisBeneficiary.Oid
+                _ThisBeneficiary.RelationShip = (CType(ASPxFormLayout1.FindNestedControlByFieldName("Relationship"), ASPxSpinEdit)).Value
+                'speLevelofCover.Text = CInt(_ThisBeneficiary.LevelofCover.Oid)
+                _ThisBeneficiary.LevelofCover = (CType(ASPxFormLayout1.FindNestedControlByFieldName("LevelofCover"), ASPxSpinEdit)).Value
+                'txtTitle.Text = _ThisBeneficiary.Title
+                _ThisBeneficiary.Title = (CType(ASPxFormLayout1.FindNestedControlByFieldName("Title"), ASPxTextBox)).Value
+                'txtFirstName.Text = _ThisBeneficiary.FirstName
+                _ThisBeneficiary.FirstName = (CType(ASPxFormLayout1.FindNestedControlByFieldName("FirstName"), ASPxTextBox)).Value
+                'txtInitials.Text = _ThisBeneficiary.Initials
+                _ThisBeneficiary.Initials = (CType(ASPxFormLayout1.FindNestedControlByFieldName("Initials"), ASPxTextBox)).Value
+                'txtSurname.Text = _ThisBeneficiary.SurName
+                _ThisBeneficiary.SurName = (CType(ASPxFormLayout1.FindNestedControlByFieldName("SurName"), ASPxTextBox)).Value
+                'txtGender.Text = _ThisBeneficiary.Gender
+                _ThisBeneficiary.Gender = (CType(ASPxFormLayout1.FindNestedControlByFieldName("Gender"), ASPxTextBox)).Value
+                'txtJoinDate.Text = _ThisBeneficiary.JoinDate
+                _ThisBeneficiary.JoinDate = (CType(ASPxFormLayout1.FindNestedControlByFieldName("JoinDate"), ASPxDateEdit)).Value
+                'txtVIP.Text = _ThisBeneficiary.Vip
+                _ThisBeneficiary.Vip = (CType(ASPxFormLayout1.FindNestedControlByFieldName("Vip"), ASPxTextBox)).Value
+                'txtAddr1.Text = _ThisBeneficiary.Addr1
+                _ThisBeneficiary.Addr1 = (CType(ASPxFormLayout1.FindNestedControlByFieldName("Addr1"), ASPxTextBox)).Value
+                'txtAddr2.Text = _ThisBeneficiary.Addr2
+                _ThisBeneficiary.Addr2 = (CType(ASPxFormLayout1.FindNestedControlByFieldName("Addr2"), ASPxTextBox)).Value
+                'txtAddr3.Text = _ThisBeneficiary.Addr3
+                _ThisBeneficiary.Addr3 = (CType(ASPxFormLayout1.FindNestedControlByFieldName("Addr3"), ASPxTextBox)).Value
+                'txtCity.Text = _ThisBeneficiary.City
+                _ThisBeneficiary.City = (CType(ASPxFormLayout1.FindNestedControlByFieldName("city"), ASPxTextBox)).Value
+                'txtCounty.Text = _ThisBeneficiary.County
+                _ThisBeneficiary.County = (CType(ASPxFormLayout1.FindNestedControlByFieldName("County"), ASPxTextBox)).Value
+                'txtPostcode.Text = _ThisBeneficiary.PostCode
+                _ThisBeneficiary.PostCode = (CType(ASPxFormLayout1.FindNestedControlByFieldName("Postcode"), ASPxTextBox)).Value
+
+                txtWorkPhone.Text = _ThisBeneficiary.WorkPhone
+                txtHomePhone.Text = _ThisBeneficiary.HomePhone
+                txtMobile.Text = _ThisBeneficiary.MobilePhone
+                txtEmail.Text = _ThisBeneficiary.Email
+
+                'If Not (_ThisBeneficiary.GP Is Nothing) Then
+                '    txtGP.Text = CInt(_ThisBeneficiary.GP.Oid)
+                'End If
+
+                'If Not (_ThisBeneficiary.Practice Is Nothing) then
+                '    txtPractice.Text = CInt(_ThisBeneficiary.Practice.Oid)
+                'End If
+
+                txtDOB.Text = _ThisBeneficiary.DOB
+                txtStudent.Text = _ThisBeneficiary.Student
+                txtDeceased.Text = _ThisBeneficiary.Deceased
+                If Not (_ThisBeneficiary.LeaveDate Is Nothing) Then
+                    txtLeaveDate.Text = _ThisBeneficiary.LeaveDate
+                End If
+
+                If Not _ThisBeneficiary.Division Is Nothing Then
+                    cboDivision.Text = CInt(_ThisBeneficiary.Division.Oid)
+                End If
+
+                If Not _ThisBeneficiary.ReportingDivision Is Nothing Then
+                    cboReportingDivision.Text = CInt(_ThisBeneficiary.ReportingDivision.Oid)
+                End If
+
+                If _ThisBeneficiary.BusinessUnit Is Nothing Then
+                    cboBusinessUnit.Text = CInt(_ThisBeneficiary.BusinessUnit.Oid)
+                End If
+
+                txtPosition.Text = _ThisBeneficiary.Position
+                txtBand.Text = _ThisBeneficiary.Band
+                txtEmployeeCont.Text = _ThisBeneficiary.EmployeeContribution
+                txtEmployeeNo.Text = _ThisBeneficiary.EmployeeNo
+                txtNI.Text = _ThisBeneficiary.NINumber
+            End If
+        End Using
+
+    End Sub
+End Class

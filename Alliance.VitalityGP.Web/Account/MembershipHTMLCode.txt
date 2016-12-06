@@ -1,0 +1,516 @@
+﻿<%@ Page Language="VB" AutoEventWireup="true" CodeFile="Test.aspx.vb" Inherits="Test" %>
+
+<%@ Register Assembly="DevExpress.Xpo.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Xpo" TagPrefix="dx" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="BeneficaryEdit" runat="server">
+    <title>Beneficiary Details</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <a id="A1" ref="~/Default.aspx" runat="server">Back to the View form</a>
+    <div>
+        <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="2" EnableTheming="True" Theme="BlackGlass" DataSourceID="xpoBeneficary" style="margin-right: 124px" AlignItemCaptionsInAllGroups="True">
+            <Items>
+                <dx:LayoutItem FieldName="DPA" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="CreditCardLastTaken" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="Patient!Key" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="Password" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="ClearPassword" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="Dependant" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="Note" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="FamilyGroup" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="CreatedBy!Key" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="CreatedAt" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="ModifiedBy!Key" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="ModifiedAt" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="DeletedBy!Key" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem FieldName="DeletedAt" Visible="False">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutGroup ColCount="3" ColSpan="2" Caption="Client Details" HorizontalAlign="Left">
+                    <Items>
+                        <dx:LayoutItem Caption="Policy Number" FieldName="Oid">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="spePolicyNumber" runat="server" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="Relationship">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="speRelationship" runat="server" HorizontalAlign="Left" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="LevelofCover">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="speLevelofCover" runat="server" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                    </Items>
+                </dx:LayoutGroup>
+                <dx:LayoutGroup Caption="Personal Details" ColCount="3" ColSpan="2" HorizontalAlign="Left">
+                    <Items>
+                        <dx:LayoutItem FieldName="Pers_PersonId" Visible="False">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="ASPxFormLayout1_E63" runat="server" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="Title">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtTitle" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="FirstName">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtFirstName" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="Initials">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtInitials" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem Caption="Surname" ColSpan="2" FieldName="SurName">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtSurname" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="FullName" Visible="False">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="ASPxFormLayout1_E71" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="TitledName" Visible="False">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="ASPxFormLayout1_E72" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="FullNameSorting" Visible="False">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="ASPxFormLayout1_E73" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="Gender">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtGender" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="JoinDate">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxDateEdit ID="txtJoinDate" runat="server">
+                                    </dx:ASPxDateEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="Vip">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtVIP" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                    </Items>
+                </dx:LayoutGroup>
+                <dx:LayoutGroup ColCount="2" ColSpan="2" Caption="Address Details" HorizontalAlign="Left">
+                    <Items>
+                        <dx:LayoutItem FieldName="FullAddressLine" Visible="False">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="ASPxFormLayout1_E74" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="FullAddressBlock" Visible="False">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="ASPxFormLayout1_E75" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="Addr1">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtAddr1" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="Addr2">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtAddr2" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="Addr3">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtAddr3" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="City">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtCity" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="County">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtCounty" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="PostCode">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtPostcode" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="Latitude" Visible="False">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="ASPxFormLayout1_E96" runat="server" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="Longitude" Visible="False">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="ASPxFormLayout1_E97" runat="server" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                    </Items>
+                </dx:LayoutGroup>
+                <dx:LayoutGroup Caption="Contact Details" ColCount="2" ColSpan="2" HorizontalAlign="Left">
+                    <Items>
+                        <dx:LayoutItem ColSpan="2" FieldName="WorkPhone">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtWorkPhone" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="HomePhone">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtHomePhone" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="MobilePhone">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtMobile" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="Email">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtEmail" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="GP">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="txtGP" runat="server" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="Practice">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="txtPractice" runat="server" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                    </Items>
+                </dx:LayoutGroup>
+                <dx:LayoutGroup Caption="Employee Details1" ColCount="4" ColSpan="2" HorizontalAlign="Left">
+                    <Items>
+                        <dx:LayoutItem FieldName="DOB">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxDateEdit ID="txtDOB" runat="server">
+                                    </dx:ASPxDateEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="Student">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtStudent" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="Deceased">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtDeceased" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="HasLeft">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtHasleft" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="LeaveDate">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxDateEdit ID="txtLeaveDate" runat="server">
+                                    </dx:ASPxDateEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="ReasonLeft">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxComboBox ID="txtReasonLeft" runat="server">
+                                        <Items>
+                                            <dx:ListEditItem Text="LeftCompany" Value="LeftCompany" />
+                                            <dx:ListEditItem Text="Deceased" Value="Deceased" />
+                                            <dx:ListEditItem Text="ExStudent" Value="ExStudent" />
+                                            <dx:ListEditItem Text="NonPayment" Value="NonPayment" />
+                                            <dx:ListEditItem Text="DidNotStart" Value="DidNotStart" />
+                                            <dx:ListEditItem Text="SetUpInError" Value="SetUpInError" />
+                                        </Items>
+                                    </dx:ASPxComboBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                    </Items>
+                </dx:LayoutGroup>
+                <dx:LayoutGroup Caption="Employee Details2" ColCount="2" ColSpan="2" HorizontalAlign="Left">
+                    <Items>
+                        <dx:LayoutItem ColSpan="2" FieldName="Division">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxComboBox ID="cboDivision" runat="server" ViewStateMode="Enabled">
+                                    </dx:ASPxComboBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="ReportingDivision">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="cboReportingDivision" runat="server" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="BusinessUnit">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="cboBusinessUnit" runat="server" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem ColSpan="2" FieldName="Position">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtPosition" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="Band">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtBand" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="EmployeeContribution">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxSpinEdit ID="txtEmployeeCont" runat="server" Number="0">
+                                    </dx:ASPxSpinEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="EmployeeNo">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtEmployeeNo" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem FieldName="NINumber">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtNI" runat="server" Width="170px">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                    </Items>
+                </dx:LayoutGroup>
+            </Items>
+            <SettingsItems VerticalAlign="Middle" />
+        </dx:ASPxFormLayout>
+<%--        <dx:ASPxDateEdit ID="ASPxDateEdit1" runat="server">
+        </dx:ASPxDateEdit>--%>
+
+        <table class="dxflInternalEditorTable_BlackGlass" style="width: 16%">
+            <tr>
+                <td>
+        <dx:ASPxButton ID="btnUpdate" runat="server" Text="Update" AutoPostBack="false" OnClick="btnUpdate_Click">
+        </dx:ASPxButton>
+                </td>
+                <td>
+        <dx:ASPxButton ID="btnCancel" runat="server" Text="Cancel" AutoPostBack="false" OnClick="btnCancel_Click">
+        </dx:ASPxButton>
+                </td>
+            </tr>
+        </table>
+        <br />
+<%--        <a id="A1" ref="~/Default.aspx" runat="server">Back to the View form</a>--%>
+        <%--<dx:XpoDataSource ID="XpoDataSource1" runat="server" DefaultSorting="" TypeName="Alliance.Data.Consultant">--%><%--<dx:XpoDataSource ID="xpoBeneficary" runat="server" TypeName="Alliance.Data.Beneficiary" Criteria="[Oid] = ?" >--%>
+        <dx:XpoDataSource ID="xpoBeneficary" runat="server" TypeName="Alliance.Data.Beneficiary" Criteria="">
+        <%--<dx:XpoDataSource ID="xpoBeneficary" runat="server" TypeName="Alliance.Data.Beneficiary" Criteria="[Oid] = ?" >--%>
+<%--        <dx:XpoDataSource ID="XpoDataSource1" runat="server" TypeName="Alliance.Data.Beneficiary">--%>
+            <CriteriaParameters>
+                <asp:QueryStringParameter DefaultValue="-1" Name="Oid" QueryStringField="id" />
+            </CriteriaParameters>
+        </dx:XpoDataSource>
+    </div>
+    </form>
+</body>
+</html>
