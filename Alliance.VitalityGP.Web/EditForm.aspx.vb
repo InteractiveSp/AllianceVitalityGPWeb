@@ -7,41 +7,18 @@ Imports DevExpress.Data.Filtering
 Imports Alliance.Data
 Partial Class EditForm
     Inherits System.Web.UI.Page
-    Dim strOid As String
 
 
-    Private Sub Page_Init(sender As Object, e As EventArgs) Handles Me.Init
-        'Dim session As Session = XpoHelper.GetNewSession()
-        'XpoDataSource2.Session = session
-
-        'Dim session As Session = XpoHelper2.GetNewSession(XpoHelper.Database.XpoWebTest)
-        'XpoDataSource1.Session = session
-
-
-        'Dim session As Session = XpoHelper.GetNewSession()
-        'XpoDataSource1.Session = session
-
-    End Sub
-
+    ''' <summary>
+    ''' Populates the fields with values from the database based on referral ID pulled from the querystring 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        ' Get our membership info
-        ' Dim u As MembershipUser
-        ' u = Membership.GetUser(user.Identity.Name)
-
-
-        '' Alternative to using bound text box to save on realestate just query xpo object with id And display referral in Referral Detail group section header
-        'If CInt(Request.QueryString("id")) Then
-        '    Using collection As New XPCollection(XpoDataSource1.Session, GetType(Referral))
-        '        collection.Filter = CriteriaOperator.Parse("Oid = " & Request.QueryString("id"))
-        '        Dim viewRef As Referral = CType(collection(0), Referral)
-        '        ASPxFormLayout1.Items(3).Caption = "AS Ref " & viewRef.CreatedBy.ToString() & " Details"
-        '    End Using
-
-        'End If
 
         Dim session As Session = XpoHelper.GetNewSession()
-        XpoDataSource1.Session = Session
+        XpoDataSource1.Session = session
         Dim _Referral As Referral
         _Referral = XpoDataSource1.Session.GetObjectByKey(Of Referral)(CInt(Request.QueryString("id")))
 
@@ -51,7 +28,7 @@ Partial Class EditForm
         dtDOB.Text = _Referral.Patient.DOB '.ToShortDateString()
         cboGender.Text = _Referral.Patient.Gender
         txtPolicyNumber.Text = _Referral.PolicyNo
-        ASPxFormLayout1_E1.Checked = _Referral.StaffClaim
+        chkStaffClaim.Checked = _Referral.StaffClaim
         txtAddress1.Text = _Referral.Patient.Addr1
         txtAddress2.Text = _Referral.Patient.Addr2
         txtAddress3.Text = _Referral.Patient.Addr3
@@ -60,13 +37,14 @@ Partial Class EditForm
         ' txtPostcode.Text = _Referral.Patient.PostCode
         ' txtAltContact.Text = _Referral.Patient.
         If IsDBNull(_Referral.Patient.HomePhone) And IsDBNull(_Referral.Patient.WorkPhone) Then
-            txtTelephone.Text = _Referral.Patient.MobilePhone
+
+            txtTPhone.Text = _Referral.Patient.MobilePhone
         Else
 
             If IsDBNull(_Referral.Patient.HomePhone) Then
-                txtTelephone.Text = _Referral.Patient.MobilePhone
+                txtTPhone.Text = _Referral.Patient.MobilePhone
             Else
-                txtTelephone.Text = _Referral.Patient.WorkPhone
+                txtTPhone.Text = _Referral.Patient.WorkPhone
             End If
 
         End If
@@ -75,18 +53,26 @@ Partial Class EditForm
 
         'chkLeaveMessage.Checked = _Referral.
         ' chkThirdParty.Checked = _Referral.Patient.
-        txtPresentingCondition.Text = _Referral.Details
+        txtPresentingCondition.Text = _Referral.SpecialInstructions
+        cboContactTitle.Text = _Referral.Patient.GuardianTitle
+        txtContactFirstname.Text = _Referral.Patient.GuardianFirstName
+        txtContactLastname.Text = _Referral.Patient.GuardianSurName
         '  chkSelfPay.Checked = _Referral
-        txtSymptoms.Text = _Referral.SymptomDetails
+        txtSymptoms.Text = _Referral.Details
         spinOutPatientLimit.Text = _Referral.OutPatientLimit
         spinExcess.Text = _Referral.Excess
         ' cboGPSelect.SelectedItem.Value = _Referral.gp
         cboHospitalList.Text = _Referral.HospitalList
-        txtPostalCode.Text = _Referral.Patient.PostCode
+        txtPostcode.Text = _Referral.Patient.PostCode
         'txtpost.Text = _Referral.Patient.PostCode
     End Sub
 
 
+    ''' <summary>
+    ''' Redirects user to the prevrefs page
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click, btnCancel.Click
         Response.Redirect("~/prevrefs.aspx")
     End Sub

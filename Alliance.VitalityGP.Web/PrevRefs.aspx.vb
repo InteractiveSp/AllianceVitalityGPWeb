@@ -4,19 +4,14 @@ Imports DevExpress.Data.Filtering
 
 Partial Class PrevRefs
     Inherits System.Web.UI.Page
-    Private Sub PrevRefs_Init(sender As Object, e As EventArgs) Handles Me.Init
-        'Dim session As Session = XpoHelper.GetNewSession()
-        'XpoDataSource2.Session = session
 
 
-        'Dim session As Session = XpoHelper.GetNewSession()
-        'XpoDataSource1.Session = session
-
-
-    End Sub
-
+    ''' <summary>
+    ''' Populates the Gridview with values from Referral and Patient table
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        ' MsgBox("Current user logged in is" & HttpContext.Current.User.Identity.Name.ToString)
 
         Dim session As Session = XpoHelper.GetNewSession()
         XpoDataSource1.Session = session
@@ -27,7 +22,6 @@ Partial Class PrevRefs
         XpoDataSource1.Criteria = "[CreatedBy]= " & u.ProviderUserKey.ToString
 
 
-        'Dim _referral As Referral = session.GetObjectByKey(Of Referral)(u.ProviderUserKey)
 
         Dim _referralView As XPView = New XPView(XpoDataSource1.Session, GetType(Referral))
         _referralView.AddProperty("Oid", "Oid")
@@ -110,9 +104,13 @@ Partial Class PrevRefs
 
     End Sub
 
+    ''' <summary>
+    ''' Display true false strings (CRM compatibility) to y and no or checked
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub ASPxGridView1_CustomColumnDisplayText(sender As Object, e As DevExpress.Web.ASPxGridViewColumnDisplayTextEventArgs) Handles ASPxGridView1.CustomColumnDisplayText
 
-        'display true false strings (CRM compatibility) to y and no or checked
         If e.Column.FieldName = "ConsentThirdParty" Or e.Column.FieldName = "LeaveMessage" Then
             If Convert.ToBoolean(e.Value) = True Then
                 e.DisplayText = "Y"

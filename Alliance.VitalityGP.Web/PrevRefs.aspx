@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
  
-    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" EnableTheming="True" KeyFieldName="Oid" Theme="Moderno">
+    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" EnableTheming="True" KeyFieldName="Oid">
 
 <SettingsCommandButton>
 <ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>

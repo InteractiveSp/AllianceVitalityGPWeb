@@ -731,6 +731,17 @@ Namespace Alliance.Data
                 SetPropertyValue("CreationDate", _CreationDate, value)
             End Set
         End Property
+
+        Private _FirstLoginDate As DateTime
+        Public Property FirstLoginDate() As DateTime
+            Get
+                Return _FirstLoginDate
+            End Get
+            Set(ByVal value As DateTime)
+                SetPropertyValue("FirstLoginDate", _FirstLoginDate, value)
+            End Set
+        End Property
+
         Public ReadOnly Property IsOnline() As Boolean
             Get
                 Dim span As New TimeSpan(0, System.Web.Security.Membership.UserIsOnlineTimeWindow, 0)

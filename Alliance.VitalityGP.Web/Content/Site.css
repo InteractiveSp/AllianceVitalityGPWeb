@@ -684,3 +684,27 @@
 {
     border-top: 0!important;
 }
+
+/** Styles added by RP **/
+.cssDropDownMinValue
+{
+    min-width: 150px;
+   
+}
+
+.cssTextboxMinValue
+{
+    min-width: 150px;
+   
+}
+
+.dxflGroupBox_Material > .dxflGroup_Material > tbody > tr:first-child > .dxflGroupCell_Material > .dxflItem_Material, .dxflGroupBox_Material > .dxflGroup_Material > .dxflChildInFirstRowSys > .dxflGroupCell_Material > .dxflItem_Material {
+    padding-top: 1px;
+    margin-top: 1px;
+}
+
+.dxflGroupBox_Material {
+
+    margin: 5px 0;
+}
+

@@ -1089,6 +1089,50 @@ Namespace Alliance.Data
             End Set
         End Property
     End Class
+
+    ''' <summary>
+    ''' Stores titles/salutations that a user could have
+    ''' </summary>
+    Public Class Title
+        Inherits XPObject
+        Private fTitle As String
+
+
+        Public Sub New(ByVal session As Session)
+            MyBase.New(session)
+        End Sub
+        Public Sub New(ByVal session As Session, ByVal title As String)
+            Me.New(session)
+            Me.Title = title
+        End Sub
+
+        <Size(15)>
+        Public Property Title() As String
+            Get
+                Return fTitle
+            End Get
+            Set(ByVal value As String)
+                SetPropertyValue(Of String)("Title", fTitle, value)
+            End Set
+        End Property
+
+
+        Private fDisplayOrder As Integer
+        Public Property DisplayOrder() As Integer
+            Get
+                Return fDisplayOrder
+            End Get
+            Set(ByVal value As Integer)
+                SetPropertyValue(Of Integer)("DisplayOrder", fDisplayOrder, value)
+            End Set
+        End Property
+
+        Public Overrides Function ToString() As String
+            Return String.Format("{0}", Title)
+        End Function
+    End Class
+
+
 End Namespace
 
 

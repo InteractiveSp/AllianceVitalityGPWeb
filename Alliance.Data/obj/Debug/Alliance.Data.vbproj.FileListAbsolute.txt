@@ -560,9 +560,9 @@ C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Allianc
 C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Alliance.Data\bin\Debug\es\DevExpress.XtraCharts.v16.1.resources.dll
 C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Alliance.Data\bin\Debug\ja\DevExpress.XtraCharts.v16.1.resources.dll
 C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Alliance.Data\bin\Debug\ru\DevExpress.XtraCharts.v16.1.resources.dll
-C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Alliance.Data\obj\Debug\Alliance.Data.vbprojResolveAssemblyReference.cache
 C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Alliance.Data\obj\Debug\Resources.resources
 C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Alliance.Data\obj\Debug\Alliance.Data.vbproj.GenerateResource.Cache
 C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Alliance.Data\obj\Debug\Alliance.Data.dll
 C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Alliance.Data\obj\Debug\Alliance.Data.xml
 C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Alliance.Data\obj\Debug\Alliance.Data.pdb
+C:\Dev Projects\Willow TFS\Alliance.VitalityGP.Web\AllianceVitalityGPWeb\Alliance.Data\obj\Debug\Alliance.Data.vbprojResolveAssemblyReference.cache

@@ -563,6 +563,11 @@ Namespace Alliance.Data
                         isValid = True
                         user.LastLoginDate = DateTime.Now
                         user.LastActivityDate = DateTime.Now
+
+                        If user.FirstLoginDate = DateTime.MinValue Then
+                            user.FirstLoginDate = DateTime.Now
+                        End If
+
                         If Not GetIPAddress().StartsWith("10.") Then
                             user.LastIPAddress = GetIPAddress()
                         End If

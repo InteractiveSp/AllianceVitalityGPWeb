@@ -52,7 +52,7 @@
 
                 <dx:ASPxLabel ID="lblPassword" runat="server" AssociatedControlID="tbPassword" Text="Password:" />
                 <div class="form-field">
-                    <dx:ASPxTextBox ID="Password" runat="server" placeholder="Password"  Password="true" Width="200px" Text="Password99">
+                    <dx:ASPxTextBox ID="Password" runat="server" placeholder="Password"  Password="true" Width="200px" Text="">
                         <ValidationSettings ValidationGroup="Login1">
                             <RequiredField ErrorText="Password is required." IsRequired="true" />
                         </ValidationSettings>

@@ -22,6 +22,11 @@ Alliance.Data
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="T:Alliance.Data.Title">
+ <summary>
+ Stores titles/salutations that a user could have
+ </summary>
+</member>
 <member name="M:Alliance.Data.CloneHelper.Clone(System.Object,System.Boolean)">
  <param name="synchronize">If set to true, reference properties are only cloned in case
  the reference object does not exist in the targetsession. Otherwise the exising object will be
